@@ -3,6 +3,7 @@ import 'package:alepha_digital_tracking/screens/onboarding/screen2.dart';
 import 'package:alepha_digital_tracking/screens/onboarding/screen3.dart';
 import 'package:alepha_digital_tracking/screens/onboarding/screen4.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,16 +36,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: PageView(
-        children: const[
-           Screen1(),
-           Screen2(),
-           Screen3(),
-           Screen4(),
+      body: Stack(
+        children: [
+          PageView(
+            controller: pageController,
+            children: const [
+              Screen1(),
+              Screen2(),
+              Screen3(),
+              Screen4(),
+            ],
+          ),
+          Container(
+            alignment: const Alignment(0, 0.8),
+            child: SmoothPageIndicator(controller: pageController, count: 4),
+          ),
         ],
       ),
     );
