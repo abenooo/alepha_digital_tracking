@@ -1,7 +1,7 @@
-import 'package:alepha_digital_tracking/screens/onboarding/screen1.dart';
-import 'package:alepha_digital_tracking/screens/onboarding/screen2.dart';
-import 'package:alepha_digital_tracking/screens/onboarding/screen3.dart';
-import 'package:alepha_digital_tracking/screens/onboarding/screen4.dart';
+import '/screens/onboarding/screen1.dart';
+import '/screens/onboarding/screen2.dart';
+import '/screens/onboarding/screen3.dart';
+import '/screens/onboarding/screen4.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -37,6 +37,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   PageController pageController = PageController();
+  String buttonText = "Skip";
+  int currentPageIndicator = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           PageView(
             controller: pageController,
+            onPageChanged: (index) {
+              currentPageIndicator = index;
+              if (index == 3) {
+                buttonText = "Finish";
+              } else {
+                buttonText = "Skip";
+              }
+              setState(() {});
+            },
             children: const [
               Screen1(),
               Screen2(),
@@ -54,7 +65,35 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Container(
             alignment: const Alignment(0, 0.8),
-            child: SmoothPageIndicator(controller: pageController, count: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const SizedBox(),
+                GestureDetector(
+                  onTap: () {
+                    print("navigate to home");
+                  },
+                  child: Text(buttonText),
+                ), // Fixed: Added parentheses to SizedBox
+                SmoothPageIndicator(
+                  controller: pageController,
+                  count: 4,
+                ),
+                currentPageIndicator == 3
+                    ? const SizedBox(
+                        width: 10,
+                      )
+                    : GestureDetector(
+                        onTap: () {
+                          // print("button is clicked");
+                          pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeIn);
+                        },
+                        child: const Text("Next"),
+                      ), // Fixed: Added Text widget for "Skip"
+              ],
+            ),
           ),
         ],
       ),
