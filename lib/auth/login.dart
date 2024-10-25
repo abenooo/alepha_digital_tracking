@@ -1,3 +1,4 @@
+import 'package:alepha_digital_tracking/Test.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -6,60 +7,39 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-        
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 40),
-              // Row(
-              //   children: [
-              //     Container(
-              //       width: 60,
-              //       height: 60,
-              //       decoration: BoxDecoration(
-              //         color: Colors.grey[300],
-              //         borderRadius: BorderRadius.circular(12),
-              //       ),
-              //       child:
-              //           const Icon(Icons.image, size: 20, color: Colors.grey),
-              //     ),
-              //     const SizedBox(width: 12),
-              //     const Text(
-              //       'Alpha Digital Trucking',
-              //       style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
-              //     ),
-              //   ],
-              // ),
-              // const SizedBox(height: 40),
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    // color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child:  Center(
-                    child:  
-                    Image.asset('asset/onboarding/Welcome Screen.png', 
-                    fit: BoxFit.cover,),
+                  child: Center(
+                    child: Image.asset(
+                      'asset/onboarding/Welcome Screen.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
-              // reusable button
-               Center(
-                child: Column( // Added Column to arrange children vertically
-                  mainAxisAlignment: MainAxisAlignment.center, // Center the column
-                  children: [
-                    const Text('Welcome', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),), 
+              // const SizedBox(height: 40),
+              const Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
                     Text(
-                      'Have a better sharing experience', // Changed TextSpan to Text
-                      style: TextStyle(
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.normal),
+                      'Welcome',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Have a better sharing experience',
+                      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -69,18 +49,20 @@ class LoginScreen extends StatelessWidget {
               LoginButton(
                 text: 'Create an account',
                 onPressed: () {
-                  // TODO: Implement Create an account 
+                  // TODO: Implement Create an account
                 },
+                isOutlined: false,
               ),
               const SizedBox(height: 16),
               LoginButton(
                 text: 'Login',
                 onPressed: () {
-                  // TODO: Implement  login
+                  // TODO: Implement login
                 },
+                isOutlined: true,
               ),
+              const MyWidget(),
               const SizedBox(height: 24),
-             
             ],
           ),
         ),
@@ -92,11 +74,13 @@ class LoginScreen extends StatelessWidget {
 class LoginButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final bool isOutlined;
 
   const LoginButton({
     Key? key,
     required this.text,
     required this.onPressed,
+    this.isOutlined = false,
   }) : super(key: key);
 
   @override
@@ -104,15 +88,21 @@ class LoginButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        // primary: Colors.grey[700],
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
+          side: isOutlined
+              ? const BorderSide(color: Color(0xFF008955), width: 2)
+              : BorderSide.none,
         ),
+        backgroundColor: isOutlined ? Colors.white : const Color(0xFF008955),
       ),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 16),
+        style: TextStyle(
+          fontSize: 16,
+          color: isOutlined ? const Color(0xFF008955) : Colors.white,
+        ),
       ),
     );
   }
