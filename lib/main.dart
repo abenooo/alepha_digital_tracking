@@ -1,4 +1,4 @@
-import 'package:alepha_digital_tracking/auth/login.dart';
+import 'auth/welcome-screen.dart';
 import '/screens/onboarding/screen1.dart';
 import '/screens/onboarding/screen2.dart';
 import '/screens/onboarding/screen3.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // for android
       debugShowMaterialGrid: false,
-      // iphone 
+      // iphone
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // If onboarding was completed, go directly to the login screen
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
       );
     } else {
       // Otherwise, go to the onboarding screens
@@ -117,52 +117,68 @@ class _MyHomePageState extends State<MyHomePage> {
               // Screen4(),
             ],
           ),
-      Container(
-  alignment: const Alignment(0, 0.9), // Move content lower on the screen
-  child: Column(
-    mainAxisSize: MainAxisSize.min, // Ensures content is compact and respects alignment
-    children: [
-      // Page indicator in a single row
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SmoothPageIndicator(
-            controller: pageController,
-            count: 3,
+          Container(
+            alignment:
+                const Alignment(0, 0.9), // Move content lower on the screen
+            child: Column(
+              mainAxisSize: MainAxisSize
+                  .min, // Ensures content is compact and respects alignment
+              children: [
+                // Page indicator in a single row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SmoothPageIndicator(
+                      controller: pageController,
+                      count: 3,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                    height: 20), // Space between indicator and button
+
+                // Full-width "Next" button
+                SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0), // Optional padding for aesthetics
+
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF008955),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () {
+                        if (currentPageIndicator == 2) {
+                          _completeOnboarding();
+                        } else {
+                          pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeIn,
+                          );
+                        }
+                      },
+                      child: Text(
+                        currentPageIndicator == 2 ? "Get Started" : "Next",
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
-      const SizedBox(height: 20), // Space between indicator and button
-
-      // Full-width "Next" button
-      SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0), // Optional padding for aesthetics
-          child: ElevatedButton(
-            onPressed: () {
-              if (currentPageIndicator == 2) {
-                _completeOnboarding();
-              } else {
-                pageController.nextPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeIn,
-                );
-              }
-            },
-            child: Text(currentPageIndicator == 2 ? "Get Started" : "Next"),
-          ),
-        ),
-      ),
-    ],
-  ),
-      ),
-    ],
-      ),
     );
   }
-
-
 
   // Function to mark onboarding as complete
   Future<void> _completeOnboarding() async {
@@ -170,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await prefs.setBool('completedOnboarding', true);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
+      MaterialPageRoute(builder: (context) => const WelcomeScreen()),
     );
   }
 }
