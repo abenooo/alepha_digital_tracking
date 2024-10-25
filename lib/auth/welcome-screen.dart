@@ -1,8 +1,7 @@
-import 'package:alepha_digital_tracking/Test.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +27,20 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // const SizedBox(height: 40),
+              const SizedBox(height: 40),
               const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children:  [
+                  children: [
                     Text(
                       'Welcome',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'Have a better sharing experience',
-                      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -61,8 +62,7 @@ class LoginScreen extends StatelessWidget {
                 },
                 isOutlined: true,
               ),
-              const MyWidget(),
-              const SizedBox(height: 24),
+              const SizedBox(height: 40),
             ],
           ),
         ),
@@ -88,20 +88,17 @@ class LoginButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF008955),
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: isOutlined
-              ? const BorderSide(color: Color(0xFF008955), width: 2)
-              : BorderSide.none,
         ),
-        backgroundColor: isOutlined ? Colors.white : const Color(0xFF008955),
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 16,
-          color: isOutlined ? const Color(0xFF008955) : Colors.white,
+          color: Colors.white,
         ),
       ),
     );
