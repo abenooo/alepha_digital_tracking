@@ -77,28 +77,32 @@ class LoginButton extends StatelessWidget {
   final bool isOutlined;
 
   const LoginButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.isOutlined = false,
-  }) : super(key: key);
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF008955),
+        backgroundColor: isOutlined ? Colors.white : const Color(0xFF008955),
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
+          // Add border color for outlined button
+          side: isOutlined 
+              ? const BorderSide(color:  Color(0xFF008955), width: 2) 
+              : BorderSide.none,
         ),
       ),
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 16,
-          color: Colors.white,
+        style: TextStyle(
+          fontSize: 16.0,
+          color: isOutlined ? const Color(0xFF008955) : Colors.white,
         ),
       ),
     );
