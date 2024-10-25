@@ -8,12 +8,12 @@ class Screen1 extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('asset/onboarding/onboarding1.gif'),
+        Image.asset('asset/onboarding/Anywhereyouare.png'),
         const SizedBox(
           height: 40.0,
         ),
         const Text(
-          "This is screen one showing about track",
+          "Any where you are",
           style: TextStyle(
               color: Colors.black, 
               fontSize: 22.0, 
@@ -26,7 +26,7 @@ class Screen1 extends StatelessWidget {
        Container(
          padding: const EdgeInsets.symmetric(horizontal: 20),
          child: Text(
-           "We Need To Work Hard, We Need To Work Hard, We Need To Work",
+           "This is screen one rac This is screen one showing about trac This is screen one showing about trac",
            style: TextStyle(
              color: Colors.black.withOpacity(0.6),
              fontSize: 16,

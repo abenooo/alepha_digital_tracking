@@ -8,12 +8,12 @@ class Screen2 extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('asset/onboarding/onboarding2.gif'),
+        Image.asset('asset/onboarding/Atanytime.png'),
         const SizedBox(
           height: 40.0,
         ),
         const Text(
-          "This is screen one showing about track",
+          "At anytime",
           style: TextStyle(
               color: Colors.black, 
               fontSize: 22.0, 
