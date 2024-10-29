@@ -114,7 +114,7 @@ class _SignUpPageState extends State<RegisterScreen> {
               },
             ),
             const SizedBox(height: 16),
-            Row(
+          const Row(
               children: [
                 Expanded(child: Divider()),
                 Padding(
@@ -139,12 +139,12 @@ class _SignUpPageState extends State<RegisterScreen> {
                 // Handle Gmail sign up
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             OutlinedButton.icon(
-              icon: Icon(Icons.facebook),
-              label: Text('Sign up with Facebook'),
+              icon: const Icon(Icons.facebook),
+              label: const Text('Sign up with Facebook'),
               style: OutlinedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
