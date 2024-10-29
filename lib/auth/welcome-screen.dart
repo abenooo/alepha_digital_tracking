@@ -1,3 +1,4 @@
+import '/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -50,7 +51,8 @@ class WelcomeScreen extends StatelessWidget {
               LoginButton(
                 text: 'Create an account',
                 onPressed: () {
-                  // TODO: Implement Create an account
+               Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen())
+               ,);
                 },
                 isOutlined: false,
               ),
