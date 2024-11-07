@@ -1,4 +1,4 @@
-import 'auth/welcome-screen.dart';
+import 'auth/welcome_screen.dart';
 import '/screens/onboarding/screen1.dart';
 import '/screens/onboarding/screen2.dart';
 import '/screens/onboarding/screen3.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       // iphone
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Ride App',
       theme: ThemeData(
         colorScheme:
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 19, 172, 108)),

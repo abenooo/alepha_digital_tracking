@@ -1,5 +1,9 @@
+import 'package:alepha_digital_tracking/auth/login_screen.dart';
+
 import '/auth/otp_screen.dart';
 import 'package:flutter/material.dart';
+
+const Color primaryColor = Color(0xFF008955); // Define your primary color here
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -13,19 +17,16 @@ class _SignUpPageState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-              size: 16.0,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: const Text('Back',
-              style: TextStyle(color: Colors.black, fontSize: 16.0)),
           backgroundColor: Colors.white,
-          elevation: 0,
+          title: const Text("Back",
+              style: TextStyle(color: Colors.black, fontSize: 14)),
           centerTitle: false,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back, color: Colors.black, size: 14),
+          ),
         ),
         body: Container(
           color: Colors.white,
@@ -106,10 +107,8 @@ class _SignUpPageState extends State<RegisterScreen> {
                   ],
                 ),
                 const SizedBox(height: 24),
-
                 SizedBox(
                   width: double.infinity,
-
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF008955),
@@ -190,16 +189,25 @@ class _SignUpPageState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 12),
                 Center(
-                  child: RichText(
-                    text: const TextSpan(
-                      style: TextStyle(color: Colors.black),
-                      children: [
-                        TextSpan(text: 'Already have an account? '),
-                        TextSpan(
-                          text: 'Sign in',
-                          style: TextStyle(color: Colors.green),
-                        ),
-                      ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  LoginScreen()),
+                      );
+                    },
+                    child: RichText(
+                      text: const TextSpan(
+                        style: TextStyle(color: Colors.black),
+                        children: [
+                          TextSpan(text: 'Already have an account? '),
+                          TextSpan(
+                            text: 'Sign in',
+                            style: TextStyle(color: Colors.green),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
