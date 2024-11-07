@@ -1,3 +1,4 @@
+import '/auth/login_screen.dart';
 import '/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +62,7 @@ class WelcomeScreen extends StatelessWidget {
                 text: 'Login',
                 onPressed: () {
                   // TODO: Implement login
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                 isOutlined: true,
               ),
