@@ -1,19 +1,24 @@
+import 'package:alepha_digital_tracking/auth/set_password.dart';
+
 import '/auth/register_screen.dart';
 import 'package:flutter/material.dart';
+
+// Define your color constant at the top of the file
+const Color primaryColor = Color(0xFF008955); // Define  primary color here
 
 void main() {
   runApp(const OtpScreen());
 }
 
 class OtpScreen extends StatelessWidget {
-  const OtpScreen({Key? key}) : super(key: key);
+  const OtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Phone Verification',
       theme: ThemeData(
-        // primarySwatch: Colors.green,
+        primaryColor: primaryColor, // Use the defined constant
         scaffoldBackgroundColor: Colors.white,
       ),
       home: const PhoneVerificationScreen(),
@@ -22,14 +27,13 @@ class OtpScreen extends StatelessWidget {
 }
 
 class PhoneVerificationScreen extends StatefulWidget {
-  const PhoneVerificationScreen({Key? key}) : super(key: key);
+  const PhoneVerificationScreen({super.key});
 
   @override
-  _PhoneVerificationScreenState createState() =>
-      _PhoneVerificationScreenState();
+  PhoneVerificationScreenState createState() => PhoneVerificationScreenState();
 }
 
-class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
+class PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
   final List<String> _otpDigits = ['', '', '', '', ''];
   int _currentIndex = 0;
 
@@ -128,7 +132,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
             width: double.infinity,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF008955),
+                backgroundColor: primaryColor,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -136,7 +140,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const OtpScreen()));
+                    MaterialPageRoute(builder: (context) => const SetPassword()));
               },
               child: const Text(
                 "Verify",
